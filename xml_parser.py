@@ -23,6 +23,12 @@ class XMLParser:
                 isFinal = False
             currentState = { 'name': name, 'transitions': transitions, 'isFinal': isFinal }
             self.states.append(currentState)
+        initialState = self.root.find('INITIALSTATE').get('value')
+        for state in self.states:
+            if(state['name'] == initialState):
+                state['isInitial'] = True
+            else:
+                state['isInitial'] = False
         return self.states
 
     def getAlphabet(self):
