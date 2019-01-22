@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AUTOMATON>
+    <TYPE value="DEA"/>
+    <ALPHABET>
+        <ITEM value="a"/>
+        <ITEM value="b"/>
+        <ITEM value="c"/>
+    </ALPHABET>
+    <STATE name="q_0" finalstate="false">
+        <TRANSITION target="q_1">
+            <LABEL read="a"/>
+            <LABEL read="b"/>
+        </TRANSITION>
+        <TRANSITION target="q_3">
+            <LABEL read="c"/>
+        </TRANSITION>
+    </STATE>
+    <STATE name="q_1" finalstate="false">
+        <TRANSITION target="q_1">
+            <LABEL read="a"/>
+        </TRANSITION>
+        <TRANSITION target="q_3">
+            <LABEL read="c"/>
+        </TRANSITION>
+        <TRANSITION target="q_2">
+            <LABEL read="b"/>
+        </TRANSITION>
+    </STATE>
+    <STATE name="q_2" finalstate="true">
+        <TRANSITION target="q_2">
+            <LABEL read="a"/>
+            <LABEL read="c"/>
+        </TRANSITION>
+        <TRANSITION target="q_1">
+            <LABEL read="b"/>
+        </TRANSITION>
+    </STATE>
+    <STATE name="q_3" finalstate="true">
+        <TRANSITION target="q_3">
+            <LABEL read="a"/>
+            <LABEL read="b"/>
+            <LABEL read="c"/>
+        </TRANSITION>
+    </STATE>
+    <INITIALSTATE value="q_0"/>
+</AUTOMATON>
