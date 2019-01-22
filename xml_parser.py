@@ -6,6 +6,7 @@ class XMLParser:
         self.file = ET.parse(filename)
         self.root = self.file.getroot()
         self.states = []
+        self.alphabet = []
 
     def getStateInfo(self):
         for state in self.root.findall('STATE'):
@@ -23,3 +24,9 @@ class XMLParser:
             currentState = { 'name': name, 'transitions': transitions, 'isFinal': isFinal }
             self.states.append(currentState)
         return self.states
+
+    def getAlphabet(self):
+        for a in self.root.find('ALPHABET').findall('ITEM'):
+            a = a.get('value')
+            self.alphabet.append(a)
+        return self.alphabet
