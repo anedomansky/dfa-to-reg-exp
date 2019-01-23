@@ -16,8 +16,10 @@ class XMLParser:
             for transition in state.findall('TRANSITION'):
                 target = transition.get('target')
                 target = int(target[2:]) + 1
-                symbol = transition.find('LABEL').get('read')
-                transitionInfo = { 'target': target, 'symbol': symbol }
+                symbols = []
+                for label in transition.findall('LABEL'):
+                    symbols.append(label.get('read'))
+                transitionInfo = { 'target': target, 'symbols': symbols }
                 transitions.append(transitionInfo)
             if(state.get('finalstate') == 'true'):
                 isFinal = True
