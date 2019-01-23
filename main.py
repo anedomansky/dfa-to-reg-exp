@@ -9,7 +9,6 @@ initializer = initialization.Initialization(stateInfo)
 
 
 
-print(file)
 print(stateInfo)
 print(alphabet)
-print(initializer.initialize())
+print(initializer.initialize(alphabet))

@@ -11,9 +11,11 @@ class XMLParser:
     def getStateInfo(self):
         for state in self.root.findall('STATE'):
             name = state.get('name')
+            name = int(name[2:]) + 1
             transitions = []
             for transition in state.findall('TRANSITION'):
                 target = transition.get('target')
+                target = int(target[2:]) + 1
                 symbol = transition.find('LABEL').get('read')
                 transitionInfo = { 'target': target, 'symbol': symbol }
                 transitions.append(transitionInfo)
@@ -25,7 +27,7 @@ class XMLParser:
             self.states.append(currentState)
         initialState = self.root.find('INITIALSTATE').get('value')
         for state in self.states:
-            if(state['name'] == initialState):
+            if(state['name'] == int(initialState[2:])+1):
                 state['isInitial'] = True
             else:
                 state['isInitial'] = False
