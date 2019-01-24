@@ -18,7 +18,18 @@ finalRegExp = transitiveClosure.getFinalRegExp()
 
 
 
-print(stateInfo)
-print(alphabet)
-print(r0)
+# print(stateInfo)
+# print(alphabet)
+# print(r0)
 print(finalRegExp)
+
+conversionOutputFile = open('./conversion/' + sys.argv[1].replace('./automaton-definitions/', '') + '.txt', 'w')
+conversionOutputFile.write('##### Information about the states              #####\n')
+conversionOutputFile.write(str(stateInfo))
+conversionOutputFile.write('\n##### Available alphabet                        #####\n')
+conversionOutputFile.write(str(alphabet))
+conversionOutputFile.write('\n##### R0                                        #####\n')
+conversionOutputFile.write(str(r0))
+conversionOutputFile.write('\n##### Final regular expression (not simplified) #####\n')
+conversionOutputFile.write(finalRegExp)
+conversionOutputFile.close()
