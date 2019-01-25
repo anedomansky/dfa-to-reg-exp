@@ -1,0 +1,11 @@
+##### Information about the states              #####
+[{'name': 1, 'transitions': [{'target': 1, 'symbols': ['b']}, {'target': 2, 'symbols': ['a']}], 'isFinal': False, 'isInitial': True}, {'name': 2, 'transitions': [{'target': 2, 'symbols': ['a']}, {'target': 1, 'symbols': ['b']}], 'isFinal': True, 'isInitial': False}]
+##### Available alphabet                        #####
+['a', 'b']
+##### R0                                        #####
+[['-', '-', '-'], ['-', 'e+b', 'a'], ['-', 'b', 'e+a']]
+##### Rk #####
+k = 1:[['-', '-', '-'], ['-', '(e+b)+(e+b)(e+b)*(e+b)', '(a)+(e+b)(e+b)*(a)'], ['-', '(b)+(b)(e+b)*(e+b)', '(e+a)+(b)(e+b)*(a)']]
+k = 2:[['-', '-', '-'], ['-', '((e+b)+(e+b)(e+b)*(e+b))+((a)+(e+b)(e+b)*(a))((e+a)+(b)(e+b)*(a))*((b)+(b)(e+b)*(e+b))', '((a)+(e+b)(e+b)*(a))+((a)+(e+b)(e+b)*(a))((e+a)+(b)(e+b)*(a))*((e+a)+(b)(e+b)*(a))'], ['-', '((b)+(b)(e+b)*(e+b))+((e+a)+(b)(e+b)*(a))((e+a)+(b)(e+b)*(a))*((b)+(b)(e+b)*(e+b))', '((e+a)+(b)(e+b)*(a))+((e+a)+(b)(e+b)*(a))((e+a)+(b)(e+b)*(a))*((e+a)+(b)(e+b)*(a))']]
+##### Final regular expression (not simplified) #####
+((a)+(e+b)(e+b)*(a))+((a)+(e+b)(e+b)*(a))((e+a)+(b)(e+b)*(a))*((e+a)+(b)(e+b)*(a))

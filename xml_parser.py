@@ -1,6 +1,9 @@
 import xml.etree.ElementTree as ET
 
 class XMLParser:
+    """ 
+        Parsing of any automaton definition .xml file that has been created by AtoCC
+    """
     def __init__(self, filename):
         self.filename = filename
         self.file = ET.parse(filename)
@@ -9,6 +12,20 @@ class XMLParser:
         self.alphabet = []
 
     def getStateInfo(self):
+        """ 
+            Creation of the states with all necessary information:
+                name
+                    transforms the default String q_0 into an Integer 1
+                                                  q_1 into an Integer 2
+                                                  ...
+                transitions
+                    list of dicts -> [{target : name_of_the_state, symbols: list_of_Strings}, {...}, ...]
+                isFinal
+                    a Boolean that indicates a final state
+                isInitial
+                    a Boolean that indicates a initial state
+
+        """
         for state in self.root.findall('STATE'):
             name = state.get('name')
             name = int(name[2:]) + 1
@@ -36,6 +53,9 @@ class XMLParser:
         return self.states
 
     def getAlphabet(self):
+        """ 
+            Returns the alphabet of the automaton as a list of Strings
+        """
         for a in self.root.find('ALPHABET').findall('ITEM'):
             a = a.get('value')
             self.alphabet.append(a)

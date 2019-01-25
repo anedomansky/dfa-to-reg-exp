@@ -1,4 +1,7 @@
 class TransitiveClosure:
+    """ 
+        Calculates the transitive closure
+    """
     def __init__(self, r0, stateInfo):
         self.rK = [row[:] for row in r0]
         self.rKMinusOne = r0
@@ -6,17 +9,36 @@ class TransitiveClosure:
         self.states = len(self.stateInfo)
         self.regExp = ''
     
-    def closure(self):
+    def closure(self, outputFile):
+        """ 
+            Rk(i,j) = Rk-1(i,j) + Rk-1(i,k)(Rk-1(k,k))*Rk-1(k,j)
+
+            rK: a two dimensional list
+            rKMinusOne: a two dimensional list
+        """
+        # outputFile.write('R0 :')
+        # outputFile.write(str(self.rKMinusOne))
+        # outputFile.write('\n')
         for k in range(1, self.states + 1):
-            print('r0:',self.rKMinusOne)
             self.rKMinusOne = [row[:] for row in self.rK]
             for i in range(1, self.states + 1):
                 for j in range(1, self.states + 1):
                     self.rK[i][j] = '(' + self.rKMinusOne[i][j] + ')+(' + self.rKMinusOne[i][k] + ')(' + self.rKMinusOne[k][k] + ')*(' + self.rKMinusOne[k][j] + ')'
-            print('k= ', k, self.rK)
+            outputFile.write('k = ')
+            outputFile.write(str(k))
+            outputFile.write(':')
+            outputFile.write(str(self.rK))
+            outputFile.write('\n')
     
-    def getFinalRegExp(self):
-        self.closure()
+    def getFinalRegExp(self, outputFile):
+        """
+            1. Look through all states and find the initial state and the final state
+            2. Get the regular expression out of the Rk two dimensional list
+            
+            Returns the final regular expression
+        """
+        self.closure(outputFile)
+        # initialize with out of scope int (valid states are starting at 1)
         initialState = 0
         finalState = 0
         for state in self.stateInfo:
@@ -27,7 +49,5 @@ class TransitiveClosure:
                 initialState = state['name']
             elif(state['isFinal']):
                 finalState = state['name']
-        for i in range(1, self.states + 1):
-            if(finalState == i):
-                self.regExp = self.rK[initialState][i]
+        self.regExp = self.rK[initialState][finalState]
         return self.regExp
