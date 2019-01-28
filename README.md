@@ -1,6 +1,10 @@
 # DFA-to-RegExp
 Convert DFAs into regular expressions using the transitive closure method in Python 3.
 
+## Use Cases
+
+The programm works best with automatons that have only one initial state and only one final state.
+
 ## Installation
 
 `git clone https://github.com/anedomansky/dfa-to-reg-exp.git`

@@ -16,9 +16,7 @@ class TransitiveClosure:
             rK: a two dimensional list
             rKMinusOne: a two dimensional list
         """
-        # outputFile.write('R0 :')
-        # outputFile.write(str(self.rKMinusOne))
-        # outputFile.write('\n')
+
         for k in range(1, self.states + 1):
             self.rKMinusOne = [row[:] for row in self.rK]
             for i in range(1, self.states + 1):
