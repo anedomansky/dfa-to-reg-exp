@@ -1,8 +1,0 @@
-##### Information about the states              #####
-[{'name': 1, 'transitions': [{'target': 2, 'symbols': ['a']}, {'target': 3, 'symbols': ['b']}], 'isFinal': True, 'isInitial': True}, {'name': 2, 'transitions': [{'target': 1, 'symbols': ['b']}, {'target': 3, 'symbols': ['a']}], 'isFinal': False, 'isInitial': False}, {'name': 3, 'transitions': [{'target': 1, 'symbols': ['a']}, {'target': 2, 'symbols': ['b']}], 'isFinal': False, 'isInitial': False}]
-##### Available alphabet                        #####
-['a', 'b']
-##### R0                                        #####
-[['-', '-', '-', '-'], ['-', 'e', 'a', 'b'], ['-', 'b', 'e', 'a'], ['-', 'a', 'b', 'e']]
-##### Final regular expression (not simplified) #####
-(((e)+(e)(e)*(e))+((a)+(e)(e)*(a))((e)+(b)(e)*(a))*((b)+(b)(e)*(e)))+(((b)+(e)(e)*(b))+((a)+(e)(e)*(a))((e)+(b)(e)*(a))*((a)+(b)(e)*(b)))(((e)+(a)(e)*(b))+((b)+(a)(e)*(a))((e)+(b)(e)*(a))*((a)+(b)(e)*(b)))*(((a)+(a)(e)*(e))+((b)+(a)(e)*(a))((e)+(b)(e)*(a))*((b)+(b)(e)*(e)))
