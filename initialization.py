@@ -35,7 +35,9 @@ class Initialization:
                 else:
                     self.r0[i][j] = 'null'
                 for a in alphabet:
-                    if(self.hasTransition(i, a, j)):
+                    if(self.hasTransition(i, a, j) and self.r0[i][j] == 'null'):
+                        self.r0[i][j] = a
+                    elif(self.hasTransition(i, a, j) and self.r0[i][j] != 'null'):
                         self.r0[i][j] += '+' + a
         return self.r0
     
