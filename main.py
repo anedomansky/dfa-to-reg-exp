@@ -7,6 +7,7 @@ if(len(sys.argv) > 1):
     file = xml_parser.XMLParser(sys.argv[1])
 else:
     print('The automaton file could not be read or does not exist.')
+    sys.exit()
 
 conversionOutputFile = open('./conversion/' + sys.argv[1].replace('./automaton-definitions/', '') + '.txt', 'w')
 conversionOutputFile.write('##### Information about the states #####\n')
