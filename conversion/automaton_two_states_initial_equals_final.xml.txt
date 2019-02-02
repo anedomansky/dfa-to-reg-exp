@@ -1,5 +1,5 @@
 ##### Information about the states #####
-[{'name': 1, 'transitions': [{'target': 1, 'symbols': ['1']}, {'target': 2, 'symbols': ['0']}], 'isFinal': True, 'isInitial': True}, {'name': 2, 'transitions': [{'target': 2, 'symbols': ['0']}, {'target': 1, 'symbols': ['1']}], 'isFinal': False, 'isInitial': False}]
+[{'transitions': [{'symbols': ['1'], 'target': 1}, {'symbols': ['0'], 'target': 2}], 'isInitial': True, 'name': 1, 'isFinal': True}, {'transitions': [{'symbols': ['0'], 'target': 2}, {'symbols': ['1'], 'target': 1}], 'isInitial': False, 'name': 2, 'isFinal': False}]
 ##### Available alphabet #####
 ['0', '1']
 ##### R0 #####
